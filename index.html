@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurenix AI Inc. | 企业级 AI 自动化与 SaaS 核心平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #10b981;
+            --accent: #ec4899;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glow-color: rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Background Glows */
+        .glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--glow-color) 0%, rgba(11, 15, 25, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glow-orb-1 { top: -200px; left: -100px; }
+        .glow-orb-2 { bottom: -100px; right: -100px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--card-border);
+            background: rgba(11, 15, 25, 0.8);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 8rem 5% 5rem 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 850px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 50%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Compliance Card Specially for KYB Audit */
+        .compliance-banner {
+            margin-top: 5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(99, 102, 241, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            backdrop-filter: blur(10px);
+        }
+
+        .compliance-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .compliance-text h3 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .compliance-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .compliance-badge {
+            background: rgba(10, 25, 20, 0.8);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 4rem 5% 2rem 5%;
+            background: #07090e;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo-col h4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-col p {
+            max-width: 250px;
+            font-size: 0.85rem;
+        }
+
+        .footer-col h5 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        .corporate-info {
+            line-height: 1.8;
+        }
+
+        .corporate-info strong {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 5%;
+            }
+            nav {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-dot"></div>
+            Aurenix AI
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#solutions">解决方案</a></li>
+                <li><a href="#features">平台特性</a></li>
+                <li><a href="#compliance">安全与合规</a></li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#contact" class="btn btn-primary">启动控制台</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="tagline">
+                <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--primary); margin-right:4px;"></span>
+                企业级 AI 编排 2.0
+            </div>
+            <h1>使用 AI Agent 智能体实现企业运营自动化</h1>
+            <p>Aurenix AI 致力于开发安全、合规的 AI SaaS 平台与自动化数据流水线。我们帮助金融机构、科技初创企业和全球化企业自主运行复杂的业务工作流。</p>
+            <div class="hero-actions">
+                <a href="#solutions" class="btn btn-primary">探索解决方案</a>
+                <a href="#compliance" class="btn btn-outline">合规性信息</a>
+            </div>
+        </section>
+
+        <section class="features" id="solutions">
+            <div class="section-header">
+                <h2>我们的技术矩阵</h2>
+                <p>专为高性能、安全合规及端到端自动化量身定制。</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>AI Agent 智能体编排</h3>
+                    <p>在安全的容器运行环境中部署持续性、任务导向的大语言模型智能体。支持自动纠错、故障恢复和工具集成。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>企业级数据流水线</h3>
+                    <p>借助先进的 OCR 模型、语义聚类和模式强制解析器，大规模处理、验证并转换复杂的文档池。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>自动化银行系统集成</h3>
+                    <p>通过可编程 KYB 对齐、分类账自动核对和多币种账户协调 API，为企业资金管理运营提供强力支持。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="compliance" style="padding-top:0;">
+            <div class="compliance-banner">
+                <div class="compliance-text">
+                    <h3>🛡️ 全球金融合规标准与 KYB 验证资质</h3>
+                    <p>Aurenix AI Inc. 严格遵守美国州及联邦的合规监管规定。我们的技术基础设施拥有完整的文档记录与合规审计，全面兼容全球主要一线银行及金融机构。</p>
+                </div>
+                <span class="compliance-badge">已验证合规实体</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-col">
+                <div class="logo" style="margin-bottom:1rem; font-size:1.3rem;">
+                    <div class="logo-dot"></div>
+                    Aurenix AI
+                </div>
+                <p>构建未来企业级 Agent 智能体自动化系统。</p>
+            </div>
+            <div class="footer-col">
+                <h5>产品平台</h5>
+                <ul>
+                    <li><a href="#">Agent OS</a></li>
+                    <li><a href="#">安全核心</a></li>
+                    <li><a href="#">数据解析器</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>合规条款</h5>
+                <ul>
+                    <li><a href="#">服务协议</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">KYB 与反洗钱声明</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="corporate-info">
+                <strong>Aurenix AI Inc.</strong> (科罗拉多州登记号：<strong>20261595471</strong>)<br>
+                联邦雇主识别号 (EIN)：<strong>42-2656960</strong><br>
+                法定注册地址：<strong>1500 N Grant St Unit 336, Denver, CO 80203, United States</strong>
+            </div>
+            <div>
+                &copy; 2026 Aurenix AI Inc. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
