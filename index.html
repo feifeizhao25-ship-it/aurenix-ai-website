@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurenix AI Inc. | 企业级 AI 自动化与 SaaS 核心平台</title>
-    <meta name="description" content="Aurenix AI Inc. is a B2B SaaS provider specializing in AI agent orchestration, secure data integration, and enterprise workflow automation.">
+    <title>Aurenix AI Inc. | Consumer AI Products for Wellness, Astrology, Energy and Content</title>
+    <meta name="description" content="Aurenix AI Inc. builds consumer AI products: SEASONS wellness, TianJi astrology, EnergyIQ bill forecasting and ContentFlow publishing. A Colorado corporation based in Denver.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -218,8 +218,14 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card {
@@ -231,6 +237,8 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
         }
 
         .card::before {
@@ -277,6 +285,21 @@
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .card-link:hover {
+            color: var(--primary-hover);
         }
 
         /* Compliance Card Specially for KYB Audit */
@@ -427,14 +450,14 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#solutions">解决方案</a></li>
-                <li><a href="#features">平台特性</a></li>
-                <li><a href="#compliance">安全与合规</a></li>
-                <li><a href="about.html">关于我们</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#compliance">Company</a></li>
             </ul>
         </nav>
         <div>
-            <a href="#contact" class="btn btn-primary">启动控制台</a>
+            <a href="mailto:ops@aurenix-ai.com" class="btn btn-primary">Contact Us</a>
         </div>
     </header>
 
@@ -442,47 +465,63 @@
         <section class="hero">
             <div class="tagline">
                 <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--primary); margin-right:4px;"></span>
-                企业级 AI 编排 2.0
+                Consumer AI Products
             </div>
-            <h1>使用 AI Agent 智能体实现企业运营自动化</h1>
-            <p>Aurenix AI 致力于开发安全、合规的 AI SaaS 平台与自动化数据流水线。我们帮助科技企业、跨境电商和全球化企业自主运行复杂的业务工作流。</p>
+            <h1>Practical AI for Everyday Life</h1>
+            <p>Aurenix AI builds focused consumer apps that use artificial intelligence to make daily decisions simpler: staying well through the seasons, understanding your birth chart, forecasting your power bill, and publishing content across platforms.</p>
             <div class="hero-actions">
-                <a href="#solutions" class="btn btn-primary">探索解决方案</a>
-                <a href="#compliance" class="btn btn-outline">合规性信息</a>
+                <a href="#products" class="btn btn-primary">Explore Our Products</a>
+                <a href="#about" class="btn btn-outline">About the Company</a>
             </div>
         </section>
 
-        <section class="features" id="solutions">
+        <section class="features" id="products">
             <div class="section-header">
-                <h2>我们的技术矩阵</h2>
-                <p>专为高性能、安全合规及端到端自动化量身定制。</p>
+                <h2>Our Products</h2>
+                <p>Four independent apps, each built around one clear job.</p>
             </div>
             <div class="grid">
                 <div class="card">
-                    <div class="card-icon">🧠</div>
-                    <h3>AI Agent 智能体编排</h3>
-                    <p>在安全的容器运行环境中部署持续性、任务导向的大语言模型智能体。支持自动纠错、故障恢复和工具集成。</p>
+                    <div class="card-icon">🌿</div>
+                    <h3>SEASONS</h3>
+                    <p>Seasonal wellness, powered by Traditional Chinese Medicine and AI. Daily guidance that follows the time of year, from spring renewal to winter rest.</p>
+                    <a href="https://seasonsvip.com" class="card-link">seasonsvip.com &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h3>TianJi</h3>
+                    <p>Western astrology, decoded by AI. Birth chart readings and daily forecasts explained in plain language.</p>
+                    <a href="https://www.tianji-astrology.com" class="card-link">tianji-astrology.com &rarr;</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">⚡</div>
-                    <h3>企业级数据流水线</h3>
-                    <p>借助先进的 OCR 模型、语义聚类和模式强制解析器，大规模处理、验证并转换复杂的文档池。</p>
+                    <h3>EnergyIQ</h3>
+                    <p>Know your power bill before it arrives. Energy insights, solar and storage signals for households.</p>
+                    <a href="https://energy-iq.app" class="card-link">energy-iq.app &rarr;</a>
                 </div>
                 <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>安全数据集成与智能分析</h3>
-                    <p>通过企业级 API 实现跨平台数据整合、自动化报表生成和商业智能分析，为企业决策与运营效率提供强力支持。</p>
+                    <div class="card-icon">✍️</div>
+                    <h3>ContentFlow</h3>
+                    <p>Create once. Publish everywhere. A content workflow tool for creators and small teams managing multiple channels.</p>
+                    <a href="https://contentflow.solutions" class="card-link">contentflow.solutions &rarr;</a>
                 </div>
+            </div>
+        </section>
+
+        <section class="features" id="about" style="padding-top:0;">
+            <div class="section-header">
+                <h2>About Aurenix AI</h2>
+                <p>We are a small product company based in Denver, Colorado. Each of our apps is developed, operated and supported by the same team, and each one is available as its own subscription.</p>
             </div>
         </section>
 
         <section class="features" id="compliance" style="padding-top:0;">
             <div class="compliance-banner">
                 <div class="compliance-text">
-                    <h3>🛡️ 企业合规标准与安全认证</h3>
-                    <p>Aurenix AI Inc. 严格遵守美国州及联邦的合规监管规定。我们的技术基础设施拥有完整的文档记录与安全审计，保障企业数据安全与隐私合规。</p>
+                    <h3>&#128737;&#65039; A Registered US Company</h3>
+                    <p>Aurenix AI Inc. is a Colorado corporation. Our corporate details are listed below for the convenience of banks, app stores and business partners carrying out verification.</p>
                 </div>
-                <span class="compliance-badge">已验证合规实体</span>
+                <span class="compliance-badge">Registered Corporate Entity</span>
             </div>
         </section>
     </main>
@@ -494,33 +533,35 @@
                     <div class="logo-dot"></div>
                     Aurenix AI
                 </div>
-                <p>构建未来企业级 Agent 智能体自动化系统。</p>
+                <p>Building focused consumer AI products from Denver, Colorado.</p>
             </div>
             <div class="footer-col">
-                <h5>产品平台</h5>
+                <h5>Products</h5>
                 <ul>
-                    <li><a href="#">Agent OS</a></li>
-                    <li><a href="#">安全核心</a></li>
-                    <li><a href="#">数据解析器</a></li>
+                    <li><a href="https://seasonsvip.com">SEASONS</a></li>
+                    <li><a href="https://www.tianji-astrology.com">TianJi Astrology</a></li>
+                    <li><a href="https://energy-iq.app">EnergyIQ</a></li>
+                    <li><a href="https://contentflow.solutions">ContentFlow</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h5>合规条款</h5>
+                <h5>Company</h5>
                 <ul>
-                    <li><a href="terms.html">服务协议</a></li>
-                    <li><a href="privacy.html">隐私政策</a></li>
-                    <li><a href="terms.html#kyb">KYB 与反洗钱声明</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="corporate-info">
-                <strong>Aurenix AI Inc.</strong> (科罗拉多州登记号：<strong>20261595471</strong>)<br>
-                联邦雇主识别号 (EIN)：<strong>42-2656960</strong><br>
-                法定注册地址：<strong>1500 N Grant St Unit 336, Denver, CO 80203, United States</strong>
+                <strong>Aurenix AI Inc.</strong> (Colorado ID: <strong>20261595471</strong>)<br>
+                EIN: <strong>42-2656960</strong><br>
+                Registered address: <strong>1500 N Grant St Unit 336, Denver, CO 80203, United States</strong>
             </div>
             <div>
-                &copy; 2026 Aurenix AI Inc. 保留所有权利。
+                &copy; 2026 Aurenix AI Inc. All rights reserved.
             </div>
         </div>
     </footer>
